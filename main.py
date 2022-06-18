@@ -3,8 +3,6 @@ from pprint import pprint
 file_name = 'recipes.txt'
 
 def file_opener(file_name):
-    with open(file_name) as text:
-        cook_book = {}
         for line in text:
             food_name = line.strip()
             ingredients = []
