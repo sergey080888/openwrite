@@ -1,5 +1,7 @@
+from pprint import pprint
 
 file_name = 'recipes.txt'
+
 def file_opener(file_name):
     with open(file_name) as text:
         cook_book = {}
@@ -21,9 +23,10 @@ def file_opener(file_name):
                 ingredients.append(ingredient_dict)
             cook_book[food_name] = ingredients
             text.readline()
+
         return cook_book
 
-
-# measure и quantity поменять местами
-
-print(file_opener(file_name))
+pprint(file_opener(file_name), sort_dicts=False)
+#
+# file_opener(file_name)
+# print(cook_book)
