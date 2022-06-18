@@ -1,7 +1,8 @@
 from pprint import pprint
-
+import os
 file_name = 'recipes.txt'
-
+full_path = os.path.join(os.getcwd(), 'for_2.txt')
+print(full_path)
 def file_opener(file_name):
     with open(file_name) as text:
         cook_book = {}
@@ -23,6 +24,8 @@ def file_opener(file_name):
                 ingredients.append(ingredient_dict)
             cook_book[food_name] = ingredients
             text.readline()
+    with open(full_path, 'w') as file_object:
+        file_object.write(cook_book)
 
         return cook_book
 
