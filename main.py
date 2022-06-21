@@ -1,5 +1,5 @@
 from pprint import pprint
-# import os
+import os
 file_name = 'recipes.txt'
 # full_path = os.path.join(os.getcwd(), 'for_2.txt')
 
@@ -58,5 +58,28 @@ print()
 pprint(get_shop_list_by_dishes(['Фахитос', 'Фахитос'], 1))
 print()
 pprint(get_shop_list_by_dishes(['Фахитос'], 2))
+print()
+
+entries_list = os.listdir('result')
 
 
+def logger(list_):
+    logger_dict = {}
+    for entries in list_:
+        full_path = os.path.join(os.getcwd(), 'result', entries)
+        line = 0
+        with open(full_path, encoding='UTF-8') as file_obj:
+            for file in file_obj:
+                line += 1
+        with open(full_path, encoding='UTF-8') as file_obj:
+            logger_dict[entries] = line, file_obj.read()
+    sorted_tuple = sorted(logger_dict.items(), key=lambda x: x[1])
+
+    with open('result.txt', 'a') as file_obj:
+        for key in dict(sorted_tuple):
+            file_obj.write(f'{key}\n')
+            file_obj.write(f'{dict(sorted_tuple)[key][0]}\n')
+            file_obj.write(f'{dict(sorted_tuple)[key][1]}\n')
+
+
+print(logger(entries_list))
